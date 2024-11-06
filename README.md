@@ -2,6 +2,7 @@
 Implementation of FPT Algorithm for kXr Grid Embedding Problem
 
 --> Check_planarity.cpp file can check for the planarity of the graph, if its not planar it outputs the kuratowski subgraph (K5 or K3,3) using the boyer myrvold planarity testing.
+
 --> In the project folder to run the program,use command(Generalized commands just use brew/sudo/vcpkg according to your system):
   1) First install boost library using: brew install boost
   2) Then install graphviz using      : brew install graphviz
