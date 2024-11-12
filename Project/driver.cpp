@@ -76,11 +76,11 @@ int main() {
     if (!edge_input(vertices, fileName, edges)) return -1;
 
     // Call the planarity check function
-    check_planarity(vertices, edges);
+    int planar = check_planarity(vertices, edges);
+    cout<<"the number of vertices in the kuratowski subgraph is: "<<planar<<endl;
 
     //Call the isomorphism components function
-    nonIsoConnectedComponents(vertices,edges);
-
+    int comp = nonIsoConnectedComponents(vertices,edges);
+    cout<<"the number of non-isomorphic connected components is: "<<comp<<endl;
     return 0;
 }
-
