@@ -6,10 +6,10 @@
 #include <map>
 #include <set>
 #include <algorithm>
-
+#include <fstream>
 using namespace std;
 
 // Function declarations
-void nonIsoConnectedComponents(int vertices, const vector<pair<int, int>>& edges);
+int nonIsoConnectedComponents(int vertices, const vector<pair<int, int>>& edges);
 
 #endif
