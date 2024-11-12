@@ -1,0 +1,11 @@
+g++ driver.cpp check_planar.cpp check_isomorphism.cpp -o graph_program -I/opt/homebrew/opt/boost/include -L/opt/homebrew/opt/boost/lib -lboost_graph && ./graph_program
+
+
+//to get the graph drawing
+dot -Tpng graph.dot -o graph.png 
+
+//to get nonIsomorphic connected components
+dot -Tpng graph1.dot -o graph1.png && dot -Tpng graph2.dot -o graph2.png && dot -Tpng graph3.dot -o graph3.png
+
+//for trying file
+g++ trying.cpp -o a -I/opt/homebrew/opt/boost/include -L/opt/homebrew/opt/boost/lib -lboost_graph && ./a
