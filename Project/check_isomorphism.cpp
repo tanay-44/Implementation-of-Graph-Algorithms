@@ -107,11 +107,39 @@ vector<vector<int>> findNonIsomorphicComponents(vector<vector<int>>& adj, int V)
     return non_isomorphic;
 }
 
-void nonIsoConnectedComponents(int vertices, const vector<pair<int, int>>& edges){
+void custom_write_graphviz(const vector<int>& vertices, const set<pair<int, int>>& edges, const string& filename) {
+    ofstream file(filename);
+    if (!file) {
+        cerr << "Error opening file for writing!" << endl;
+        return;
+    }
+    
+    // Start the DOT format
+    file << "graph G {\n";
+    
+    // Write the vertices (nodes)
+    for (int v : vertices) {
+        file << "    " << v << ";\n";
+    }
+    
+    // Write the edges
+    for (const auto& e : edges) {
+        file << "    " << e.first << " -- " << e.second << ";\n";
+    }
+    
+    // End the DOT format
+    file << "}\n";
+    
+    file.close();
+}
+
+int nonIsoConnectedComponents(int vertices, const vector<pair<int, int>>& edges){
     vector<vector<int>> adj = convertToAdjacencyList(vertices,edges);
     vector<vector<int>> result = findNonIsomorphicComponents(adj, vertices);
     
     cout << "\nFound " << result.size() << " non-isomorphic components:" << endl;
+
+    int cnt = 0;
     for(const auto& component : result) {
         cout << "Component: ";
         for(int v : component) {
@@ -121,13 +149,19 @@ void nonIsoConnectedComponents(int vertices, const vector<pair<int, int>>& edges
         set<pair<int, int>> printed_edges; // To avoid printing duplicate edges
         for(int v : component) {
             for(int u : adj[v]) {
-                if(find(component.begin(), component.end(), u) != component.end() && 
+                if(find(component.begin(), component.end(), u) != component.end() &&
                    printed_edges.find({min(u,v), max(u,v)}) == printed_edges.end()) {
                     cout << "(" << v << "," << u << ") ";
                     printed_edges.insert({min(u,v), max(u,v)});
                 }
             }
         }
+        cout<<"\n";
+        cnt++;
+
+        string filename = "graph" + to_string(cnt) + ".dot";
+        custom_write_graphviz(component,printed_edges,filename);
         cout << "\n\n";
     }
+    return result.size();
 }
