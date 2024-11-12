@@ -13,10 +13,10 @@
 using namespace boost;
 using namespace std;
 
-typedef adjacency_list<vecS, vecS, undirectedS,property<vertex_index_t, int>,property<edge_index_t, int>> Graph;
+typedef adjacency_list<vecS, vecS, undirectedS, property<vertex_index_t, int>, property<edge_index_t, int>> Graph;
 typedef vector<graph_traits<Graph>::edge_descriptor> kuratowski_edges_t;
 
 // Function declarations
-bool check_planarity(int vertices, const vector<pair<int, int>>& edges);
+int check_planarity(int vertices, const vector<pair<int, int>>& edges);
 
 #endif 
